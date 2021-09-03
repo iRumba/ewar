@@ -15,6 +15,6 @@ namespace Rpg.Client.Core
 
         public IEnumerable<int> NodeIndexes { get; init; }
 
-        public IEnumerable<CombatSkill> Skills { get; init; }
+        public IEnumerable<CombatPower> Skills { get; init; }
     }
 }

@@ -9,10 +9,10 @@ namespace Rpg.Client.Core
         {
             Unit = unit ?? throw new ArgumentNullException(nameof(unit));
 
-            var cards = new List<CombatSkillCard>();
+            var cards = new List<CombatPowerCard>();
             foreach (var skill in Unit.Skills)
             {
-                var card = new CombatSkillCard(skill);
+                var card = new CombatPowerCard(skill);
 
                 cards.Add(card);
             }
@@ -20,7 +20,7 @@ namespace Rpg.Client.Core
             CombatCards = cards;
         }
 
-        public IEnumerable<CombatSkillCard>? CombatCards { get; }
+        public IEnumerable<CombatPowerCard>? CombatCards { get; }
 
         public Unit Unit { get; }
     }

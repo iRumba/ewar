@@ -14,7 +14,7 @@ namespace Rpg.Client.Models.Combat.GameObjects
         private readonly IUnitStateEngine[] _subStates;
 
         public UnitAttackState(UnitGraphics graphics, SpriteContainer graphicsRoot, SpriteContainer targetGraphicsRoot,
-            AnimationBlocker blocker, AttackInteraction attackInteraction)
+            AnimationBlocker blocker, IPowerInteraction attackInteraction)
         {
             var targetPosition =
                 targetGraphicsRoot.Position + new Vector2(-100 * (targetGraphicsRoot.FlipX ? 1 : -1), 0);

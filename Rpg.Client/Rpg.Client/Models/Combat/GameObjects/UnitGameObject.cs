@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using Microsoft.Xna.Framework;
@@ -33,9 +34,9 @@ namespace Rpg.Client.Models.Combat.GameObjects
 
         public CombatUnit? Unit { get; internal set; }
 
-        public void Attack(UnitGameObject target, AnimationBlocker animationBlocker, CombatSkillCard combatSkillCard)
+        public void Attack(UnitGameObject target, AnimationBlocker animationBlocker, CombatPowerCard combatSkillCard, IInterationContext interationContext)
         {
-            var attackInteraction = new AttackInteraction(Unit, target.Unit, combatSkillCard, () =>
+            Action postExecute = () =>
             {
                 if (target.Unit.Unit.IsDead)
                 {
@@ -45,9 +46,25 @@ namespace Rpg.Client.Models.Combat.GameObjects
                 {
                     target.AddStateEngine(new WoundState(target._graphics));
                 }
-            });
+            };
+
+            IPowerInteraction interation = null;
+
+            switch(combatSkillCard.Scheme.Target)
+            {
+                case CombatPowerTarget.Single:
+                    interation = new AttackInteraction(target.Unit, combatSkillCard, postExecute);
+                    break;
+
+                case CombatPowerTarget.AllEnemyGroup:
+                    var enemies = interationContext.GetEnemies();
+                    interation = new MassAttackInteration(enemies, combatSkillCard, postExecute);
+                    break;
+            }
+
             var state = new UnitAttackState(_graphics, _graphics.Root, target._graphics.Root, animationBlocker,
-                attackInteraction);
+                interation);
+
             AddStateEngine(state);
         }
 

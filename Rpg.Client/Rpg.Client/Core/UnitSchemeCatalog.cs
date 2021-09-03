@@ -11,12 +11,20 @@ namespace Rpg.Client.Core
             Name = "Svatoslav",
             Skills = new[]
             {
-                new CombatSkill
+                new CombatPower
                 {
                     DamageMin = 10,
                     DamageMinPerLevel = 2,
                     DamageMax = 12,
                     DamageMaxPerLevel = 2
+                },
+                new CombatPower
+                {
+                    DamageMin = 3,
+                    DamageMinPerLevel = 1,
+                    DamageMax = 4,
+                    DamageMaxPerLevel = 1,
+                    Target = CombatPowerTarget.AllEnemyGroup
                 }
             }
         };
@@ -28,7 +36,7 @@ namespace Rpg.Client.Core
             Name = "Ivora",
             Skills = new[]
            {
-                new CombatSkill
+                new CombatPower
                 {
                     DamageMin = 5,
                     DamageMinPerLevel = 1,
@@ -49,7 +57,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 0, 1, 2 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -66,7 +74,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 1,
                         DamageMax = 2
@@ -82,7 +90,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 2, 3, 5 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -99,7 +107,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -115,7 +123,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 6, 7, 8 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -131,7 +139,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 6, 7, 8 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -148,7 +156,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 5,
                         DamageMax = 6
@@ -164,7 +172,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 7, 8, 9 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -181,7 +189,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 6
@@ -197,7 +205,7 @@ namespace Rpg.Client.Core
                 IsBoss = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 10,
                         DamageMax = 15
@@ -215,7 +223,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 0, 1, 2 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -232,7 +240,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 1,
                         DamageMax = 2
@@ -248,7 +256,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 2, 3, 5 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -265,7 +273,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -281,7 +289,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 6, 7, 8 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -297,7 +305,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 6, 7, 8 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -314,7 +322,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 5,
                         DamageMax = 6
@@ -330,7 +338,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 7, 8, 9 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -347,7 +355,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 6
@@ -363,7 +371,7 @@ namespace Rpg.Client.Core
                 IsBoss = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 10,
                         DamageMax = 15
@@ -381,7 +389,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 0, 1, 2 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -398,7 +406,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 1,
                         DamageMax = 2
@@ -414,7 +422,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 2, 3, 5 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -431,7 +439,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -447,7 +455,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 6, 7, 8 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -463,7 +471,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 6, 7, 8 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -480,7 +488,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 5,
                         DamageMax = 6
@@ -496,7 +504,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 7, 8, 9 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -513,7 +521,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 6
@@ -529,7 +537,7 @@ namespace Rpg.Client.Core
                 IsBoss = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 10,
                         DamageMax = 15
@@ -547,7 +555,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 0, 1, 2 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -564,7 +572,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 1,
                         DamageMax = 2
@@ -580,7 +588,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 2, 3, 5 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -597,7 +605,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -613,7 +621,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 6, 7, 8 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 5
@@ -629,7 +637,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 6, 7, 8 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -646,7 +654,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 5,
                         DamageMax = 6
@@ -662,7 +670,7 @@ namespace Rpg.Client.Core
                 NodeIndexes = new[] { 7, 8, 9 },
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 2,
                         DamageMax = 4
@@ -679,7 +687,7 @@ namespace Rpg.Client.Core
                 IsUnique = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 3,
                         DamageMax = 6
@@ -695,7 +703,7 @@ namespace Rpg.Client.Core
                 IsBoss = true,
                 Skills = new[]
                 {
-                    new CombatSkill
+                    new CombatPower
                     {
                         DamageMin = 10,
                         DamageMax = 15

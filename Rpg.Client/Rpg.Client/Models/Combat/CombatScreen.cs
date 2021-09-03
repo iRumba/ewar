@@ -18,7 +18,7 @@ namespace Rpg.Client.Models.Combat
     {
         private readonly AnimationManager _animationManager;
         private readonly ActiveCombat _combat;
-        private readonly IList<ButtonBase> _enemyAttackList;
+        private readonly IList<ButtonBase> _enemyAttackButtonList;
         private readonly GameObjectContentStorage _gameObjectContentStorage;
         private readonly IList<UnitGameObject> _gameObjects;
         private readonly IUiContentStorage _uiContentStorage;
@@ -33,7 +33,7 @@ namespace Rpg.Client.Models.Combat
                       throw new InvalidOperationException(nameof(globe.ActiveCombat) + " is null");
 
             _gameObjects = new List<UnitGameObject>();
-            _enemyAttackList = new List<ButtonBase>();
+            _enemyAttackButtonList = new List<ButtonBase>();
 
             _gameObjectContentStorage = game.Services.GetService<GameObjectContentStorage>();
             _uiContentStorage = game.Services.GetService<IUiContentStorage>();
@@ -75,7 +75,7 @@ namespace Rpg.Client.Models.Combat
 
                     if (_combatSkillsPanel?.SelectedCard is not null)
                     {
-                        foreach (var button in _enemyAttackList)
+                        foreach (var button in _enemyAttackButtonList)
                         {
                             button.Draw(spriteBatch);
                         }
@@ -118,6 +118,7 @@ namespace Rpg.Client.Models.Combat
                 var cpuUnits = _combat.Units.Where(x => !x.Unit.IsPlayerControlled);
 
                 index = 0;
+                IInterationContext interationContext = new InteractionContext(_combat, isPlayer: true);
                 foreach (var unit in cpuUnits)
                 {
                     var position = new Vector2(400, index * 128 + 100);
@@ -133,7 +134,7 @@ namespace Rpg.Client.Models.Combat
                         var blocker = new AnimationBlocker();
                         _animationManager.AddBlocker(blocker);
 
-                        attackerUnitGameObject.Attack(gameObject, blocker, _combatSkillsPanel.SelectedCard);
+                        attackerUnitGameObject.Attack(gameObject, blocker, _combatSkillsPanel.SelectedCard, interationContext);
 
                         blocker.Released += (s, e) =>
                         {
@@ -143,8 +144,10 @@ namespace Rpg.Client.Models.Combat
                                 _combat.StartRound();
                             }
                         };
+
+                        _combatSkillsPanel.ResetSelectedCard();
                     };
-                    _enemyAttackList.Add(iconButton);
+                    _enemyAttackButtonList.Add(iconButton);
 
                     index++;
                 }
@@ -181,7 +184,7 @@ namespace Rpg.Client.Models.Combat
 
                                 if (_combatSkillsPanel?.SelectedCard is not null)
                                 {
-                                    foreach (var button in _enemyAttackList)
+                                    foreach (var button in _enemyAttackButtonList)
                                     {
                                         button.Update();
                                     }
@@ -190,6 +193,8 @@ namespace Rpg.Client.Models.Combat
                         }
                         else
                         {
+                            //CPU Turn
+                            IInterationContext interationContext = new InteractionContext(_combat, isPlayer: false);
                             if (!_animationManager.HasBlockers)
                             {
                                 var attackerUnitGameObject = _gameObjects.Single(x => x.Unit == _combat.CurrentUnit);
@@ -202,7 +207,7 @@ namespace Rpg.Client.Models.Combat
 
                                 var combatCard = attackerUnitGameObject.Unit.CombatCards.First();
 
-                                attackerUnitGameObject.Attack(targetPlayerObject, blocker, combatCard);
+                                attackerUnitGameObject.Attack(targetPlayerObject, blocker, combatCard, interationContext);
 
                                 blocker.Released += (s, e) =>
                                 {

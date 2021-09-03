@@ -21,7 +21,7 @@ namespace Rpg.Client.Models.Combat.Ui
             _uiContentStorage = uiContentStorage;
         }
 
-        public CombatSkillCard? SelectedCard { get; private set; }
+        public CombatPowerCard? SelectedCard { get; private set; }
 
         public CombatUnit? Unit
         {
@@ -63,6 +63,11 @@ namespace Rpg.Client.Models.Combat.Ui
                 _buttons.Add(button);
                 button.OnClick += (s, e) => { SelectedCard = card; };
             }
+        }
+
+        internal void ResetSelectedCard()
+        {
+            SelectedCard = null;
         }
     }
 }

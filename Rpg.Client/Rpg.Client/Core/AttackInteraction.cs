@@ -2,17 +2,14 @@
 
 namespace Rpg.Client.Core
 {
-    internal sealed class AttackInteraction
+    internal sealed class AttackInteraction : IPowerInteraction
     {
-        private readonly CombatUnit _attacker;
-        private readonly CombatSkillCard _combatSkillCard;
+        private readonly CombatPowerCard _combatSkillCard;
         private readonly Action _postExecute;
         private readonly CombatUnit _target;
 
-        public AttackInteraction(CombatUnit attacker, CombatUnit target, CombatSkillCard combatSkillCard,
-            Action postExecute)
+        public AttackInteraction(CombatUnit target, CombatPowerCard combatSkillCard, Action postExecute)
         {
-            _attacker = attacker;
             _target = target;
             _combatSkillCard = combatSkillCard;
             _postExecute = postExecute;
@@ -20,7 +17,7 @@ namespace Rpg.Client.Core
 
         public void Execute()
         {
-            _target.Unit.TakeDamage(_combatSkillCard.Skill.DamageMin);
+            _target.Unit.TakeDamage(_combatSkillCard.Scheme.DamageMin);
             _postExecute?.Invoke();
         }
     }

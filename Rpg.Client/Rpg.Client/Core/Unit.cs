@@ -23,7 +23,7 @@ namespace Rpg.Client.Core
         public bool IsPlayerControlled { get; set; }
         public int MaxHp { get; set; }
 
-        public IEnumerable<CombatSkill> Skills { get; set; }
+        public IEnumerable<CombatPower> Skills { get; set; }
 
         public UnitScheme UnitScheme { get; init; }
 
@@ -37,7 +37,7 @@ namespace Rpg.Client.Core
             if (Xp >= xpToLevel)
             {
                 CombatLevel++;
-                Xp = Xp - xpToLevel;
+                Xp -= xpToLevel;
 
                 InitStats(UnitScheme, CombatLevel);
             }
@@ -54,10 +54,11 @@ namespace Rpg.Client.Core
             MaxHp = unitScheme.Hp + unitScheme.HpPerLevel * CombatLevel;
             Hp = MaxHp;
 
-            Skills = unitScheme.Skills.Select(x => new CombatSkill
+            Skills = unitScheme.Skills.Select(x => new CombatPower
             {
                 DamageMin = x.DamageMin + x.DamageMinPerLevel * combatLevel,
-                DamageMax = x.DamageMax + x.DamageMaxPerLevel * combatLevel
+                DamageMax = x.DamageMax + x.DamageMaxPerLevel * combatLevel,
+                Target = x.Target
             }).ToArray();
         }
 

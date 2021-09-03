@@ -9,17 +9,17 @@ namespace Rpg.Client.Models.Combat.GameObjects
     internal sealed class HitState : IUnitStateEngine
     {
         private const double DURATION = 1;
-        private readonly AttackInteraction _attackInteraction;
+        private readonly IPowerInteraction _attackInteraction;
         private readonly UnitGraphics _graphics;
 
         private double _counter;
 
         private bool _interactionExecuted;
 
-        public HitState(UnitGraphics graphics, AttackInteraction attackInteraction)
+        public HitState(UnitGraphics graphics, IPowerInteraction powerInteraction)
         {
             _graphics = graphics;
-            _attackInteraction = attackInteraction;
+            _attackInteraction = powerInteraction;
         }
 
         public bool CanBeReplaced { get; }
